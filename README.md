@@ -12,23 +12,21 @@
 
 * Quanto mais externa a borda, mais proteção temos. 
 
-* Não retornamos nulo dentro das regras da aplicação. Pense que seu computador vai explodir.
+* Não retornamos nulo dentro das regras da aplicação, a não ser que a linguagem já ofereça algum tipo de facilitação para o tratamento de tal retorno. 
 
-* Separamos as bordas externas do sistema do seu núcleo. Não ligamos parâmetros de requisição externa com objetos de domínio diretamente, assim como não serializamos objetos de domínio para respostas de API.
+* Separamos as bordas externas do sistema do seu núcleo. Não ligamos parâmetros de requisição externa com objetos de domínio diretamente, assim como não serializamos objetos de domínio para respostas de API. Queremos ter total controle dos dados que entram e que saem. 
 
-* Medimos e avaliamos de maneira tangível o nível de legibilidade do código Aqui não existe espaço feeling. O que é para ser medido precisa ser entendido e o mecanismo de avaliação em cima da medição também precisa ser nítido. Uma leitura que explica melhor a origem deste pensamento está aqui https://github.com/asouza/pilares-design-codigo/blob/master/ddd-da-massa.md
-
-* Utilizamos o CDD para facilitar o processo de medição e avaliação de legibilidade.
+* Medimos e avaliamos de maneira tangível o nível de legibilidade do código Aqui não existe espaço feeling. O que é para ser medido precisa ser entendido e o mecanismo de avaliação em cima da medição também precisa ser nítido. A teoria que eu mais recomendo aqui é Cognitive Driven Development (CDD)
   
-* Toda indireção tende a aumentar a dificuldade de entendimento da aplicação como um todo, ela precisa merecer existir. Ou seja, precisa ajudar a distribuir a complexidade pelo sistema. 
+* Toda indireção tende a aumentar a dificuldade de entendimento da aplicação como um todo, ela precisa merecer existir.
 
-* Usamos o construtor para criar o objeto no estado válido.
+* Só criamos referências com estado válido. Toda linguagem vai oferecer um mecanismo de controle para isso, como os construtores em linguagens orientadas a objetos. 
 
 * Usamos tudo que conhecemos que está pronto. Só fazemos código do zero se for estritamente necessário. 
 
 * Idealmente, todo código escrito deveria ser chamado por alguém. Se não tem ninguém chamando, ele não deveria existir.
 
-* Só alteramos estado de referências que criamos. Não mexemos nos objetos alheios. A não ser que esse objeto seja criado para isso.
+* Só alteramos estado de referências que criamos. Não mexemos nas referências alheios. A não ser que essa referência tenha sido criada para isso.
 
 * A versão mais eficiente de uma pessoa programando é aquela que entende, questiona, refina e, uma vez combinado, implementa estritamente o que foi combinado. Não inventamos coisas que não foram pedidas e não fazemos suposição de funcionalidade.
 
@@ -47,10 +45,3 @@
 * Criamos testes automatizados para aumentar a confiabilidade da aplicação e, consequentemente, aumentar a confiança da equipe para realizar as alterações que são necessárias.
 
 * Testes automatizados devem ser derivados de maneira pragmática através das técnicas já conhecidas. Só depois de derivar casos padrões, usamos nossa criatividade para buscar extrapolar. 
-
-
-# Informações complementares
-
-* Diminua a complexidade do código observando a carga cognitiva dele - https://github.com/asouza/pilares-design-codigo/blob/master/design-orientado-a-carga-cognitiva.md
-* Um pouco da explicação sobre o meu quality profile do sonar - https://github.com/asouza/pilares-design-codigo/blob/master/quality-gate-deveficiente.md
-* Quality gate para seu projeto analisado pelo sonar - https://github.com/asouza/pilares-design-codigo/blob/master/sonar-rules-deveficiente.xml
